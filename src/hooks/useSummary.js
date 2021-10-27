@@ -10,15 +10,15 @@ export default function useSummary() {
     
     async function getUpdatedSummary() {
         await api.get("summary")
-            .then(resp => setSummary(resp.data))
+            .then(resp => setSummary(oldState => resp.data || oldState))
             .catch(err => {
                 console.log("Não foi possível atualizar o Dashboard!\n" + err.message)
             })
     }
 
     return { 
-        credit: summary.credit.toFixed(2),
-        debt: summary.debt.toFixed(2),
+        credit: summary.credit,
+        debt: summary.debt,
         getUpdatedSummary 
     }
 }

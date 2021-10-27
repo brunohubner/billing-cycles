@@ -4,6 +4,7 @@ import ContentHeader from "../common/template/ContentHeader";
 import Main from "../common/template/Main";
 import ValueBox from "../common/widget/ValueBox";
 import { SummaryContext } from "../context/SummayContext";
+import toBRL from "../utils/toBRL";
 
 export default function Dashboard(props) {
     const { credit, debt, getUpdatedSummary } = useContext(SummaryContext)
@@ -19,19 +20,19 @@ export default function Dashboard(props) {
                         cols="12 4" 
                         color="green"
                         icon="bank"
-                        value={`R$ ${credit || 0}`}
+                        value={toBRL(credit)}
                         text="Total de créditos" ></ValueBox>
                     <ValueBox 
                         cols="12 4" 
                         color="red"
                         icon="credit-card"
-                        value={`R$ ${debt || 0}`}
+                        value={toBRL(debt)}
                         text="Total de débitos" ></ValueBox>
                     <ValueBox 
                         cols="12 4" 
                         color="blue"
                         icon="money"
-                        value={`R$ ${(credit - debt).toFixed(2) || 0}`}
+                        value={toBRL(credit - debt)}
                         text="Valor Consolidado" ></ValueBox>
                 </Row>
             </Main>
