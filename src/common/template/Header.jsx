@@ -11,7 +11,7 @@ export default function Header(props) {
                 </span>
             </Link>
             <nav className="navbar navbar-static-top">
-                <a href className="sidebar-toggle" data-toggle="offcanvas"></a>
+                <a href="true" className="sidebar-toggle" data-toggle="offcanvas"></a>
             </nav>
         </header>
     )
