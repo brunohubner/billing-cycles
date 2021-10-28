@@ -10,5 +10,10 @@ export default function useTab() {
         setTabsShowed(tabsShowed2)
     }
 
-    return { selected, setSelected, tabsShowed, showTabs }
+    return { 
+        showTabs, 
+        setSelected, 
+        selected, 
+        tabsShowed
+    }
 }

@@ -8,6 +8,7 @@ import ContentHeader from "../common/template/ContentHeader"
 import Main from "../common/template/Main"
 import { ListContext } from "../context/ListContext"
 import { TabContext } from "../context/TabContext"
+import BillingCyclesForm from "./components/BillingCyclesForm"
 import BillingCyclesList from "./components/BillingCyclesList"
 
 export default function BillingCycles(props) {
@@ -35,7 +36,9 @@ export default function BillingCycles(props) {
                         <TabContent id="tabList">
                             <BillingCyclesList></BillingCyclesList>
                         </TabContent>
-                        <TabContent id="tabCreate"><h1>Incluir</h1></TabContent>
+                        <TabContent id="tabCreate">
+                            <BillingCyclesForm></BillingCyclesForm>
+                        </TabContent>
                         <TabContent id="tabUpdate"><h1>Alterar</h1></TabContent>
                         <TabContent id="tabDelete"><h1>Excluir</h1></TabContent>
                     </TabsContent>

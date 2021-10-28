@@ -3,7 +3,7 @@ import Row from "../common/layout/Row";
 import ContentHeader from "../common/template/ContentHeader";
 import Main from "../common/template/Main";
 import ValueBox from "../common/widget/ValueBox";
-import { SummaryContext } from "../context/SummayContext";
+import { SummaryContext } from "../context/SummaryContext";
 import toBRL from "../utils/toBRL";
 
 export default function Dashboard(props) {

@@ -6,6 +6,7 @@ import Content from "./common/template/Content";
 import SummaryProvider from "./context/SummaryProvider";
 import TabProvider from "./context/TabProvider"
 import ListProvider from "./context/ListProvider";
+import InputProvider from "./context/InputProvider";
 
 export default function App() {
     return (
@@ -13,12 +14,14 @@ export default function App() {
             <SummaryProvider>
                 <TabProvider>
                     <ListProvider>
-                        <Router>
-                            <Header></Header>
-                            <SideBar></SideBar>
-                            <Content></Content>
-                            <Footer></Footer>
-                        </Router>
+                        <InputProvider>
+                            <Router>
+                                <Header></Header>
+                                <SideBar></SideBar>
+                                <Content></Content>
+                                <Footer></Footer>
+                            </Router>
+                        </InputProvider>
                     </ListProvider>
                 </TabProvider>
             </SummaryProvider>
