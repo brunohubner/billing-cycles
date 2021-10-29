@@ -1,3 +1,4 @@
+import "./styles/global.css"
 import Footer from "./common/template/Footer";
 import Header from "./common/template/Header";
 import SideBar from "./common/template/SideBar";
