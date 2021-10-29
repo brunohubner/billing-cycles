@@ -1,6 +1,7 @@
+import { memo } from "react";
 import Menu from "./Menu";
 
-export default function SideBar(props) {
+function SideBar(props) {
     return (
         <aside className="main-sidebar">
             <section className="sidebar">
@@ -9,3 +10,5 @@ export default function SideBar(props) {
         </aside>
     )
 }
+
+export default memo(SideBar)

@@ -1,10 +1,16 @@
-export default function Footer(props) {
+import { memo } from "react"
+
+const year = new Date().getFullYear()
+
+function Footer(props) {
     return (
         <footer className="main-footer">
             <strong>
-                Copyright &copy; {new Date().getFullYear()}
+                Copyright &copy; {year}
                 <a href="https://github.com/brunohubner" target="_blank"> Bruno Hubner</a>
             </strong>
         </footer>
     )
 }
+
+export default memo(Footer)

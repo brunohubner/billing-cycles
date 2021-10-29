@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
 
-export default function Header(props) {
+function Header(props) {
     return (
         <header className="main-header">
             <Link to="/" className="logo">
@@ -16,3 +17,5 @@ export default function Header(props) {
         </header>
     )
 }
+
+export default memo(Header)

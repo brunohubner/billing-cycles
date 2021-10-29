@@ -8,7 +8,6 @@ export default function BillingCyclesForm(props) {
         setName, 
         setMonth, 
         setYear,
-        clearInputs,
         name, 
         month, 
         year
@@ -56,7 +55,6 @@ export default function BillingCyclesForm(props) {
                             credits: [],
                             debts: []
                         })
-                        clearInputs()
                     }}>Submit</button>
             </div>
         </form>
