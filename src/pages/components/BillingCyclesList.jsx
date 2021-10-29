@@ -4,7 +4,7 @@ import { TabContext } from "../../context/TabContext"
 
 export default function BillingCyclesList(props) {
     const { list } = useContext(ListContext)
-    const { showUpdate } = useContext(TabContext)
+    const { showUpdate, showDelete } = useContext(TabContext)
 
     function renderRows() {
         return list.map(billing => {
@@ -18,6 +18,11 @@ export default function BillingCyclesList(props) {
                             className="btn btn-warning"
                             onClick={() => showUpdate(billing)} >
                             <i className="fa fa-pencil"></i>
+                        </button>
+                        <button
+                            className="btn btn-danger"
+                            onClick={() => showDelete(billing)} >
+                            <i className="fa fa-trash-o"></i>
                         </button>
                     </td>
                 </tr>

@@ -42,7 +42,9 @@ export default function BillingCycles(props) {
                         <TabContent id="tabUpdate">
                             <BillingCyclesForm></BillingCyclesForm>
                         </TabContent>
-                        <TabContent id="tabDelete"><h1>Excluir</h1></TabContent>
+                        <TabContent id="tabDelete">
+                            <BillingCyclesForm></BillingCyclesForm>
+                        </TabContent>
                     </TabsContent>
                 </Tabs>
             </Main>

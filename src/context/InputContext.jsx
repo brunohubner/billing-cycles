@@ -6,6 +6,7 @@ export const InputContext = createContext({})
 const date = new Date()
 
 const INITIAL_STATE = {
+    _id: "",
     name: "",
     month: date.getMonth() + 1,
     year: date.getFullYear(),
@@ -47,6 +48,7 @@ export default function InputProvider(props) {
             setMonth, 
             setYear, 
             clearInputs,
+            _id: input._id,
             name: input.name, 
             month: input.month, 
             year: input.year

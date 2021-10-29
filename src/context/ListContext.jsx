@@ -1,5 +1,7 @@
 import { useCallback, useState } from "react";
 import addList from "../services/addList"
+import updateList from "../services/updateList"
+import removeList from "../services/removeList"
 import { useContext } from "react";
 import { TabContext } from "./TabContext";
 import getUpdatedList from "../services/getUpdatedList";
@@ -32,12 +34,28 @@ export default function ListProvider(props) {
         return
     }, [])
 
+    const update = useCallback(async data => {
+        const errors = await updateList(data)
+        if(!errors) return init()
+        alert("Informe dados válidos!")
+        return
+    }, [])
+
+    const remove = useCallback(async data => {
+        const errors = await removeList(data)
+        if(!errors) return init()
+        alert("Não foi possível Excluir")
+        return
+    }, [])
 
     return (
         <ListContext.Provider value={{
             list, 
             refreshList, 
-            add
+            add,
+            update,
+            remove,
+            init
         }}>
             {props.children}
         </ListContext.Provider>

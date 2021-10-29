@@ -21,9 +21,16 @@ export default function TabProvider(props) {
         setSelected("tabUpdate")
     }, [])
 
+    const showDelete  = useCallback((billing) => {
+        setInput(billing)
+        showTabs("tabDelete")
+        setSelected("tabDelete")
+    }, [])
+
     return (
         <TabContext.Provider value={{
             showUpdate,
+            showDelete,
             setSelected, 
             showTabs, 
             tabsShowed, 
