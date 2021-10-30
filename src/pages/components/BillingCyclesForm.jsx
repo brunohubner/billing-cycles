@@ -3,6 +3,7 @@ import { InputContext } from "../../context/InputContext";
 import { ListContext } from "../../context/ListContext";
 import { TabContext } from "../../context/TabContext";
 import CreditList from "./CreditList";
+import DebtList from "./DebtList";
 import LabelAndInput from "./LabelAndInput";
 
 export default function BillingCyclesForm(props) {
@@ -96,6 +97,9 @@ export default function BillingCyclesForm(props) {
                 <CreditList 
                     cols="12 6"
                     readOnly={readOnly} ></CreditList>
+                <DebtList 
+                    cols="12 6"
+                    readOnly={readOnly} ></DebtList>
             </div>
             <div className="box-footer">
                 <button 
