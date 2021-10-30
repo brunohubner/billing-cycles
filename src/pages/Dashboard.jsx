@@ -21,13 +21,13 @@ export default function Dashboard(props) {
                         color="green"
                         icon="bank"
                         value={toBRL(credit)}
-                        text="Total de créditos" ></ValueBox>
+                        text="Total de Créditos" ></ValueBox>
                     <ValueBox 
                         cols="12 4" 
                         color="red"
                         icon="credit-card"
                         value={toBRL(debt)}
-                        text="Total de débitos" ></ValueBox>
+                        text="Total de Débitos" ></ValueBox>
                     <ValueBox 
                         cols="12 4" 
                         color="blue"

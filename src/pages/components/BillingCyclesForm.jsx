@@ -5,6 +5,7 @@ import { TabContext } from "../../context/TabContext";
 import CreditList from "./CreditList";
 import DebtList from "./DebtList";
 import LabelAndInput from "./LabelAndInput";
+import Summary from "./Summary";
 
 export default function BillingCyclesForm(props) {
     const [ submitLabel, setSubmitLabel ] = useState("Salvar")
@@ -94,6 +95,7 @@ export default function BillingCyclesForm(props) {
                     onChange={setYear}
                     readOnly={readOnly}
                     placeholder="Informe o Ano" ></LabelAndInput>
+                <Summary></Summary>
                 <CreditList 
                     cols="12 6"
                     readOnly={readOnly} ></CreditList>

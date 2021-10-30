@@ -58,7 +58,7 @@ export default function CreditList(props) {
         const newCredit = {
             _id: null,
             name: credit.name,
-            value:credit.value
+            value: credit.value
         }
 
         setLocalCredits(oldState => {
