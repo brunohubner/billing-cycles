@@ -131,26 +131,28 @@ export default function DebtList(props) {
                             onChange={setDebtStatus}
                             readOnly={props.readOnly} ></Input>
                     </td>
-                    <td className="table-actions">
-                        <button 
-                            type="button"
-                            className="btn btn-success"
-                            onClick={() => add(index)} >
-                                <i className="fa fa-plus"></i>
-                        </button>
-                        <button 
-                            type="button"
-                            className="btn btn-warning"
-                            onClick={() => clone(debt, index)} >
-                                <i className="fa fa-clone"></i>
-                        </button>
-                        <button 
-                            type="button"
-                            className="btn btn-danger"
-                            onClick={() => remove(index)} >
-                                <i className="fa fa-trash-o"></i>
-                        </button>
-                    </td>
+                    {props.readOnly ? false : (
+                        <td className="table-actions">
+                            <button 
+                                type="button"
+                                className="btn btn-success"
+                                onClick={() => add(index)} >
+                                    <i className="fa fa-plus"></i>
+                            </button>
+                            <button 
+                                type="button"
+                                className="btn btn-warning"
+                                onClick={() => clone(debt, index)} >
+                                    <i className="fa fa-clone"></i>
+                            </button>
+                            <button 
+                                type="button"
+                                className="btn btn-danger"
+                                onClick={() => remove(index)} >
+                                    <i className="fa fa-trash-o"></i>
+                            </button>
+                        </td>
+                    )}
                 </tr>
             )
         })
@@ -167,7 +169,9 @@ export default function DebtList(props) {
                         <th>Nome</th>
                         <th>Valor</th>
                         <th>Status</th>
-                        <th>Ações</th>
+                        {props.readOnly ? false : (
+                            <th>Ações</th>
+                        )}
                     </tr>
                 </thead>
                 <tbody>
