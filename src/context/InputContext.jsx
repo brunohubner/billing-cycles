@@ -6,18 +6,28 @@ export const InputContext = createContext({})
 const date = new Date()
 
 const INITIAL_STATE = {
-    _id: "",
+    _id: null,
     name: "",
     month: date.getMonth() + 1,
     year: date.getFullYear(),
-    credits: [],
-    debts: []
+    credits: [{
+        _id: null,
+        name: "",
+        value: 0
+    }],
+    debts: [{
+        _id: null,
+        name: "",
+        value: 0,
+        status: ""
+    }]
 }
 
 export default function InputProvider(props) {
     const [input, setInput] = useState(INITIAL_STATE)
 
     const setName = useCallback(value => {
+        if(value.length > 45) return
         setInput(oldState => {
             return { ...oldState, name: value }
         })
@@ -37,21 +47,37 @@ export default function InputProvider(props) {
         })
     }, [])
 
+    const setCredits = useCallback(value => {
+        setInput(oldState => {
+            return { ...oldState, credits: value }
+        })
+    }, [])
+
+    const setDebts = useCallback(value => {
+        setInput(oldState => {
+            return { ...oldState, debts: value }
+        })
+    }, [])
+
     const clearInputs = useCallback(() => {
         setInput(INITIAL_STATE)
     }, [])
- 
+
     return (
         <InputContext.Provider value={{
             setInput,
             setName, 
             setMonth, 
             setYear, 
+            setCredits,
+            setDebts,
             clearInputs,
             _id: input._id,
             name: input.name, 
             month: input.month, 
-            year: input.year
+            year: input.year,
+            credits: input.credits,
+            debts: input.debts
         }}>
             {props.children}
         </InputContext.Provider>

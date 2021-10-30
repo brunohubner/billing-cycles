@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { InputContext } from "../../context/InputContext";
 import { ListContext } from "../../context/ListContext";
 import { TabContext } from "../../context/TabContext";
+import CreditList from "./CreditList";
 import LabelAndInput from "./LabelAndInput";
 
 export default function BillingCyclesForm(props) {
@@ -11,12 +12,14 @@ export default function BillingCyclesForm(props) {
 
     const {
         setName, 
-        setMonth, 
+        setMonth,
         setYear,
         _id,
         name, 
         month, 
-        year
+        year,
+        credits,
+        debts
     } = useContext(InputContext)
 
     const { add, update, remove, init } = useContext(ListContext)
@@ -27,8 +30,8 @@ export default function BillingCyclesForm(props) {
         name: String(name),
         month: Number(month),
         year: Number(year),
-        credits: [],
-        debts: []
+        credits: credits,
+        debts: debts
     }
 
     const billingWithoutId = {
@@ -90,6 +93,9 @@ export default function BillingCyclesForm(props) {
                     onChange={setYear}
                     readOnly={readOnly}
                     placeholder="Informe o Ano" ></LabelAndInput>
+                <CreditList 
+                    cols="12 6"
+                    readOnly={readOnly} ></CreditList>
             </div>
             <div className="box-footer">
                 <button 
