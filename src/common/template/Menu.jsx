@@ -12,7 +12,7 @@ export default function Menu(props) {
                 label="Cadastro"
                 icon="edit">
                 <MenuItem 
-                    path="/billing-cycles" 
+                    path="/billing" 
                     label="Ciclo de Pagamentos"
                     icon="usd" ></MenuItem>
             </MenuTree>

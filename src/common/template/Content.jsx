@@ -6,10 +6,13 @@ export default function Content(props) {
     return (
         <div className="content-wrapper">
             <Switch>
-                <Route path="/billing-cycles">
+                <Route path="/billing">
                     <BillingCycles></BillingCycles>
                 </Route>
-                <Route path="/">
+                <Route exact path="/">
+                    <Dashboard></Dashboard>
+                </Route>
+                <Route path="*">
                     <Dashboard></Dashboard>
                 </Route>
             </Switch>
