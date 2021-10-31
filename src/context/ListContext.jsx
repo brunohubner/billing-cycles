@@ -1,12 +1,12 @@
+import createBillingCyclesService from "../services/billingCyclesService";
 import { useCallback, useState } from "react";
-import addList from "../services/addList"
-import updateList from "../services/updateList"
-import removeList from "../services/removeList"
 import { useContext } from "react";
 import { TabContext } from "./TabContext";
-import getUpdatedList from "../services/getUpdatedList";
 import { createContext } from "react";
 import { InputContext } from "./InputContext";
+import showErrorsOrNext from "../utils/showErrorsOrNext";
+
+const billingCycle = createBillingCyclesService()
 
 export const ListContext = createContext({})
 
@@ -16,7 +16,7 @@ export default function ListProvider(props) {
     const { clearInputs } = useContext(InputContext)
 
     const refreshList = useCallback(async () => {
-        const newList = await getUpdatedList()
+        const newList = await billingCycle.getAll()
         setList(newList)
         clearInputs()
     }, [])
@@ -28,24 +28,18 @@ export default function ListProvider(props) {
     }, [])
 
     const add = useCallback(async data => {
-        const errors = await addList(data)
-        if(!errors) return init()
-        alert("Informe dados válidos!")
-        return
+        const resp = await billingCycle.add(data)
+        showErrorsOrNext(resp.errors, init)
     }, [])
 
     const update = useCallback(async data => {
-        const errors = await updateList(data)
-        if(!errors) return init()
-        alert("Informe dados válidos!")
-        return
+        const resp = await billingCycle.update(data)
+        showErrorsOrNext(resp.errors, init)
     }, [])
 
     const remove = useCallback(async data => {
-        const errors = await removeList(data)
-        if(!errors) return init()
-        alert("Não foi possível Excluir")
-        return
+        const resp = await billingCycle.remove(data)
+        showErrorsOrNext(resp.errors, init)
     }, [])
 
     return (
