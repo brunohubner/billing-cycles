@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { api } from "../services/api";
 import createAuthService from "../services/authService";
 import showErrorsOrNext from "../utils/showErrorsOrNext";
@@ -12,7 +12,7 @@ export const AuthContext = createContext()
 export default function AuthProvider(props) {
     const [user, setUser] = useState(INITIAL_USER_STATE)
     const [validToken, setValidToken] = useState(false)
-    // const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     async function validateToken(token) {
         const resp = await auth.validateTokenService(token)
@@ -20,9 +20,7 @@ export default function AuthProvider(props) {
             resp.valid
             ? api.defaults.headers.common.authorization = `Bearer ${token}`
             : logout()
-            setValidToken(resp.valid)
-            // console.log(token)
-            // setLoading(false)
+        setValidToken(resp.valid)
         })
     }
 
@@ -34,7 +32,6 @@ export default function AuthProvider(props) {
             setUser(resp)
             setValidToken(true)
         })
-        // setLoading(false)
     }
     
     async function login(values) {
@@ -45,7 +42,6 @@ export default function AuthProvider(props) {
             setUser(resp)
             setValidToken(true)
         })
-        // setLoading(false)
     }
 
     async function logout() {
@@ -53,13 +49,19 @@ export default function AuthProvider(props) {
         localStorage.removeItem(userKey)
         setUser(null)
         setValidToken(false)
-        // setLoading(false)
     }
 
     async function autoLogin() {
         if(!user) return
         await validateToken(user.token)
     }
+
+    useEffect(() => {
+        (async () => {
+            await autoLogin()
+            setLoading(false)
+        })()
+    }, [])
 
     return (
         <AuthContext.Provider value={{
@@ -68,7 +70,7 @@ export default function AuthProvider(props) {
             logout,
             autoLogin,
             user,
-            // loading,
+            loading,
             validToken
         }}>
             {props.children}
