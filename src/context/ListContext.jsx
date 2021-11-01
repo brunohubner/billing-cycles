@@ -29,17 +29,17 @@ export default function ListProvider(props) {
 
     const add = useCallback(async data => {
         const resp = await billingCycle.add(data)
-        showErrorsOrNext(resp.errors, init)
+        showErrorsOrNext(resp, init)
     }, [])
 
     const update = useCallback(async data => {
         const resp = await billingCycle.update(data)
-        showErrorsOrNext(resp.errors, init)
+        showErrorsOrNext(resp, init)
     }, [])
 
     const remove = useCallback(async data => {
         const resp = await billingCycle.remove(data)
-        showErrorsOrNext(resp.errors, init)
+        showErrorsOrNext(resp, init)
     }, [])
 
     return (

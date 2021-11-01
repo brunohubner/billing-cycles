@@ -3,11 +3,13 @@ import Row from "../common/layout/Row";
 import ContentHeader from "../common/template/ContentHeader";
 import Main from "../common/template/Main";
 import ValueBox from "../common/widget/ValueBox";
+import { AuthContext } from "../context/AuthContext";
 import { SummaryContext } from "../context/SummaryContext";
 import toBRL from "../utils/toBRL";
 
 export default function Dashboard(props) {
     const { credit, debt, getUpdatedSummary } = useContext(SummaryContext)
+    const { logout } = useContext(AuthContext)
 
     useEffect(getUpdatedSummary, [])
 
@@ -35,6 +37,7 @@ export default function Dashboard(props) {
                         value={toBRL(credit - debt)}
                         text="Valor Consolidado" ></ValueBox>
                 </Row>
+                <button type="button" onClick={() => logout()}>Sair</button>
             </Main>
         </div>
     )
