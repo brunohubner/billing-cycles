@@ -1,27 +1,111 @@
-import { useContext } from "react"
+import "../styles/Auth.css"
+import { useContext, useState } from "react"
 import { AuthContext } from "../context/AuthContext"
-
-const mockToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyIkX18iOnsiYWN0aXZlUGF0aHMiOnsicGF0aHMiOnsicGFzc3dvcmQiOiJpbml0IiwiZW1haWwiOiJpbml0IiwibmFtZSI6ImluaXQiLCJfaWQiOiJpbml0IiwiX192IjoiaW5pdCJ9LCJzdGF0ZXMiOnsiaWdub3JlIjp7fSwiZGVmYXVsdCI6e30sImluaXQiOnsiX2lkIjp0cnVlLCJuYW1lIjp0cnVlLCJlbWFpbCI6dHJ1ZSwicGFzc3dvcmQiOnRydWUsIl9fdiI6dHJ1ZX0sIm1vZGlmeSI6e30sInJlcXVpcmUiOnt9fSwic3RhdGVOYW1lcyI6WyJyZXF1aXJlIiwibW9kaWZ5IiwiaW5pdCIsImRlZmF1bHQiLCJpZ25vcmUiXX0sImVtaXR0ZXIiOnsiX2V2ZW50cyI6e30sIl9ldmVudHNDb3VudCI6MCwiX21heExpc3RlbmVycyI6MH0sInN0cmljdE1vZGUiOnRydWUsInNlbGVjdGVkIjp7fSwiX2lkIjoiNjE3ZGM2NjRhYWY4YWE1NWYzY2E3MzZiIn0sIiRpc05ldyI6ZmFsc2UsIl9kb2MiOnsiX2lkIjoiNjE3ZGM2NjRhYWY4YWE1NWYzY2E3MzZiIiwibmFtZSI6IkJydW5vIEh1Ym5lciIsImVtYWlsIjoiYnJ1bm9odWJuZXJkZXZAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkc08zTGRvL3AvczJZT0FiY29NZEpRZTFPQ05tZk1CaEx4bkFGRFBYMDFBTlRkWHN0TFVuZlMiLCJfX3YiOjB9LCIkaW5pdCI6dHJ1ZSwiaWF0IjoxNjM1Nzc1MDI0LCJleHAiOjE2MzU4NjE0MjR9.9BPI9GF7O0C3xSS9_iwARCKOP0xxMpXiJEABQevcKzU"
-const mockUser = {
-    name: "Bruno Hubner",
-    email: "brunohubnerdev@gmail.com",
-    password: "abc1234",
-    confirmPassword: "abc1234"
-}
+import Grid from "../common/layout/Grid"
+import Row from "../common/layout/Row"
+import InputAuth from "./components/InputAuth"
+import { AuthInputContext } from "../context/AuthInputContext"
 
 export default function Auth(props) {
-    const { login, signup, validateToken } = useContext(AuthContext)
+    const [loginMode, setLoginMode] = useState(true)
+    const { login, signup } = useContext(AuthContext)
+    const { 
+        setAuthName,
+        setAuthEmail,
+        setAuthPassword,
+        setAuthConfirmPassword,
+        clearAuthInputs,
+        name,
+        email,
+        password,
+        confirmPassword
+    } = useContext(AuthInputContext)
+
+    function changeLoginMode() {
+        setLoginMode(!loginMode)
+    }
+
+    let formData = {}
+
+    if(loginMode) {
+        formData = {
+            email,
+            password
+        }
+    } else {
+        formData = {
+            name,
+            email,
+            password,
+            confirmPassword
+        }
+    }
 
     return (
-        <div>
-            <h1>Auth component</h1>
-            <button type="button" onClick={() => login({
-                email: mockUser.email, 
-                password: mockUser.password
-                })}>Login</button>
-            <button type="button" onClick={() => signup({
-                ...mockUser
-                })}>Cadastrar</button>
+        <>
+        <div className="login-box">
+            <div className="login-logo"><b> My</b> Money App</div>
+            <div className="login-box-body">
+                <p className="login-box-msg">{
+                    loginMode ? "Bem-vindo!" : "Cadastre-se para utilizar o App"
+                }</p>
+                <form onSubmit={loginMode
+                                    ? e => {
+                                        e.preventDefault()
+                                        login(formData, clearAuthInputs) 
+                                    }
+                                    : e => {
+                                        e.preventDefault()
+                                        signup(formData, clearAuthInputs)
+                                    }}>
+                    <InputAuth
+                        value={name}
+                        hide={loginMode}
+                        placeholder="Nome"
+                        icon="user"
+                        onChange={setAuthName} />
+                    <InputAuth
+                        value={email}
+                        type="email"
+                        placeholder="E-mail"
+                        icon="envelope"
+                        onChange={setAuthEmail} />
+                    <InputAuth
+                        value={password}
+                        type="password"
+                        placeholder="Senha"
+                        icon="lock"
+                        onChange={setAuthPassword} />
+                    <InputAuth
+                        value={confirmPassword}
+                        hide={loginMode}
+                        type="password"
+                        placeholder="Confirmar Senha"
+                        icon="lock"
+                        onChange={setAuthConfirmPassword} />
+                    <Row>
+                        <Grid cols="4">
+                            <button type="submit"
+                                className="btn btn-primary btn-block btn-flat">
+                                {loginMode ? 'Entrar' : 'Registrar'}
+                            </button>
+                        </Grid>
+                    </Row>
+                </form>
+                <br />
+                <a onClick={e => {
+                    e.preventDefault()
+                    changeLoginMode()
+                    clearAuthInputs()
+                }}>
+                    {loginMode ? 'Novo usuário? Registrar aqui!' :
+                        'Já é cadastrado? Entrar aqui!'}
+                </a>
+            </div>
         </div>
+        <div className="credits"><span>por &nbsp;
+            <a href="https://github.com/brunohubner" 
+                target="_blank">Bruno Hubner</a></span></div>
+        </>
     )
 }

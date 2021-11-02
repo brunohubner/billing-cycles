@@ -19,7 +19,7 @@ const INITIAL_STATE = {
         _id: null,
         name: "",
         value: 0,
-        status: ""
+        status: "PAGO"
     }]
 }
 

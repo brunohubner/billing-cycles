@@ -9,7 +9,6 @@ import toBRL from "../utils/toBRL";
 
 export default function Dashboard(props) {
     const { credit, debt, getUpdatedSummary } = useContext(SummaryContext)
-    const { logout } = useContext(AuthContext)
 
     useEffect(getUpdatedSummary, [])
 
@@ -37,7 +36,6 @@ export default function Dashboard(props) {
                         value={toBRL(credit - debt)}
                         text="Valor Consolidado" ></ValueBox>
                 </Row>
-                <button type="button" onClick={() => logout()}>Sair</button>
             </Main>
         </div>
     )

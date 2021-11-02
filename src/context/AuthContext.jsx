@@ -24,23 +24,25 @@ export default function AuthProvider(props) {
         })
     }
 
-    async function signup(values) {
+    async function signup(values, clearAuthInputs) {
         const resp = await auth.submitService("signup", values)
         showErrorsOrNext(resp, () => {
             api.defaults.headers.common.authorization = `Bearer ${resp.token}`
             localStorage.setItem(userKey, JSON.stringify(resp))
             setUser(resp)
             setValidToken(true)
+            clearAuthInputs()
         })
     }
     
-    async function login(values) {
+    async function login(values, clearAuthInputs) {
         const resp = await auth.submitService("login", values)
         showErrorsOrNext(resp, () => {
             api.defaults.headers.common.authorization = `Bearer ${resp.token}`
             localStorage.setItem(userKey, JSON.stringify(resp))
             setUser(resp)
             setValidToken(true)
+            clearAuthInputs()
         })
     }
 
