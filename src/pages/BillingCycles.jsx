@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react"
 import TabContent from "../common/tab/TabContent"
 import TabHeader from "../common/tab/TabHeader"
-import Tabs from "../common/tab/tabs"
+import Tabs from "../common/tab/Tabs"
 import TabsContent from "../common/tab/TabsContent"
 import TabsHeader from "../common/tab/TabsHeader"
 import ContentHeader from "../common/template/ContentHeader"
