@@ -1,7 +1,8 @@
 {
-  "name": "billing-cycles-frontend",
+  "name": "mymoney",
   "version": "1.0.0",
-  "homepage": "billing-cycles-frontend",
+  "private": true,
+  "homepage": "https://brunohubner.github.io/mymoney",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

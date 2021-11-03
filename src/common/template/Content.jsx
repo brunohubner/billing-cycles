@@ -9,10 +9,7 @@ export default function Content(props) {
                 <Route path="/billing">
                     <BillingCycles></BillingCycles>
                 </Route>
-                <Route exact path="/">
-                    <Dashboard></Dashboard>
-                </Route>
-                <Route path="*">
+                <Route path="/">
                     <Dashboard></Dashboard>
                 </Route>
             </Switch>
