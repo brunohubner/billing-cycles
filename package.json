@@ -2,7 +2,7 @@
   "name": "mymoney",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://brunohubner.github.io/mymoney",
+  "homepage": "/mymoney",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
