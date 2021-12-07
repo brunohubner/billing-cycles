@@ -14,8 +14,8 @@ export default function DebtList(props) {
     const { debts, setDebts } = useContext(InputContext)
     const [localDebts, setLocalDebts] = useState(debts)
 
-    function setDebtName(newName, index){
-        if(newName.length > 45) return
+    function setDebtName(newName, index) {
+        if (newName.length > 45) return
         setLocalDebts(oldState => {
 
             const newDebt = {
@@ -32,7 +32,7 @@ export default function DebtList(props) {
     }
 
     function setDebtValue(newValue, index) {
-        if(newValue > 9999999 || newValue < 0) return
+        if (newValue > 9999999 || newValue < 0) return
         setLocalDebts(oldState => {
 
             const newDebt = {
@@ -90,7 +90,7 @@ export default function DebtList(props) {
     }
 
     function remove(index) {
-        if(debts.length <= 1) return
+        if (debts.length <= 1) return
         setLocalDebts(oldState => {
             const newDebts = [...oldState]
             newDebts.splice(index, 1)
@@ -124,32 +124,43 @@ export default function DebtList(props) {
                             readOnly={props.readOnly} ></Input>
                     </td>
                     <td>
-                        <Input
-                            index={index}
-                            value={debt.status}
-                            placeholder="PAGO | PENDENTE | AGENDADO"
-                            onChange={setDebtStatus}
-                            readOnly={props.readOnly} ></Input>
+                        {props.readOnly ? (
+                            <Input
+                                index={index}
+                                value={debt.status}
+                                placeholder="PAGO | PENDENTE | AGENDADO"
+                                onChange={setDebtStatus}
+                                readOnly={props.readOnly} ></Input>
+                        ) : (
+                            <select
+                                className="form-control"
+                                onChange={e => setDebtStatus(e.target.value, index)}
+                                value={debt.status} >
+                                <option value="PAGO">PAGO</option>
+                                <option value="PENDENTE">PENDENTE</option>
+                                <option value="AGENDADO">AGENDADO</option>
+                            </select>
+                        )}
                     </td>
                     {props.readOnly ? false : (
                         <td className="table-actions">
-                            <button 
+                            <button
                                 type="button"
                                 className="btn btn-success"
                                 onClick={() => add(index)} >
-                                    <i className="fa fa-plus"></i>
+                                <i className="fa fa-plus"></i>
                             </button>
-                            <button 
+                            <button
                                 type="button"
                                 className="btn btn-warning"
                                 onClick={() => clone(debt, index)} >
-                                    <i className="fa fa-clone"></i>
+                                <i className="fa fa-clone"></i>
                             </button>
-                            <button 
+                            <button
                                 type="button"
                                 className="btn btn-danger"
                                 onClick={() => remove(index)} >
-                                    <i className="fa fa-trash-o"></i>
+                                <i className="fa fa-trash-o"></i>
                             </button>
                         </td>
                     )}
