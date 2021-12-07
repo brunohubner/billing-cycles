@@ -3,7 +3,6 @@ import Row from "../common/layout/Row";
 import ContentHeader from "../common/template/ContentHeader";
 import Main from "../common/template/Main";
 import ValueBox from "../common/widget/ValueBox";
-import { AuthContext } from "../context/AuthContext";
 import { SummaryContext } from "../context/SummaryContext";
 import toBRL from "../utils/toBRL";
 
