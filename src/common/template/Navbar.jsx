@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import Gravatar from "react-gravatar"
 
 export default function Navbar(props) {
     const [open, setOpen] = useState(false)
@@ -21,14 +22,12 @@ export default function Navbar(props) {
                         aria-expanded={open ? 'true' : 'false'}
                         className="dropdown-toggle"
                         data-toggle="dropdown">
-                        <img src="http://lorempixel.com/160/160/abstract"
-                            className="user-image" alt={name} />
+                        <Gravatar email={email} className="user-image" />
                         <span className="hidden-xs">{name}</span>
                     </a>
                     <ul className="dropdown-menu">
                         <li className="user-header">
-                            <img src="http://lorempixel.com/160/160/abstract"
-                                className="img-circle" alt="User Image" />
+                            <Gravatar email={email} className="img-circle" />
                             <p>{name}<small>{email}</small></p>
                         </li>
                         <li className="user-footer">
