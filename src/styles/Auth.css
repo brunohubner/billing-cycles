@@ -4,7 +4,6 @@ html, body {
 
 .wrapper {
     background-color: #ddd!important;
-    height: 100%;
 }
 
 .login-box-body {
@@ -21,12 +20,11 @@ html, body {
 
 .credits {
     color: #222;
-    font-weight: bold;
-    font-style: italic;
     display: flex;
     width: 100%;
     align-items: baseline;
     justify-content: center;
+    margin-top: 40px;
 }
 
 .credits a {
