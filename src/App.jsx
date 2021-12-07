@@ -15,7 +15,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 export default function App() {
     return (
-        <div className="wrapper">
+        <div className="wrapper app">
             <AuthInputProvider>
                 <AuthProvider>
                     <AuthOrApp>

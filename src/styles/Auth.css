@@ -4,6 +4,7 @@ html, body {
 
 .wrapper {
     background-color: #ddd!important;
+    height: 100%;
 }
 
 .login-box-body {
