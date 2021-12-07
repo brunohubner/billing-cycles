@@ -14,7 +14,7 @@ export default function createBillingCyclesService() {
 
     async function update(values) {
         let data = null
-        await api.put(`/billingCycles/${values._id}`, values)
+        await api.put(`/billingCycles/${values.id}`, values)
             .then(resp => data = resp.data)
             .catch(err => data = err.response.data)
     
@@ -23,7 +23,7 @@ export default function createBillingCyclesService() {
 
     async function remove(values) {
         let data = null
-        await api.delete(`/billingCycles/${values._id}`)
+        await api.delete(`/billingCycles/${values.id}`)
             .then(resp => data = resp.data)
             .catch(err => data = err.response.data)
         return data
