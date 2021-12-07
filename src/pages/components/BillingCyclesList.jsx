@@ -9,7 +9,7 @@ export default function BillingCyclesList(props) {
     function renderRows() {
         return list.map(billing => {
             return (
-                <tr key={billing._id}>
+                <tr key={billing.id}>
                     <td>{billing.name}</td>
                     <td>{billing.month}</td>
                     <td>{billing.year}</td>

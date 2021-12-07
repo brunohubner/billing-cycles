@@ -4,7 +4,7 @@ import { InputContext } from "../../context/InputContext"
 import Input from "./Input"
 
 const emptyCredit = {
-    _id: null,
+    id: null,
     name: "",
     value: 0
 }
@@ -18,7 +18,7 @@ export default function CreditList(props) {
         setLocalCredits(oldState => {
 
             const newCredit = {
-                _id: oldState[index]._id,
+                id: oldState[index].id,
                 name: newName,
                 value: Number(oldState[index].value)
             }
@@ -34,7 +34,7 @@ export default function CreditList(props) {
         setLocalCredits(oldState => {
 
             const newCredit = {
-                _id: oldState[index]._id,
+                id: oldState[index].id,
                 name: oldState[index].name,
                 value: Number(newValue)
             }
@@ -56,7 +56,7 @@ export default function CreditList(props) {
 
     function clone(credit, index) {
         const newCredit = {
-            _id: null,
+            id: null,
             name: credit.name,
             value: credit.value
         }

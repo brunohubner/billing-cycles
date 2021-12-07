@@ -4,7 +4,7 @@ import { InputContext } from "../../context/InputContext"
 import Input from "./Input"
 
 const emptyDebt = {
-    _id: null,
+    id: null,
     name: "",
     value: 0,
     status: ""
@@ -19,7 +19,7 @@ export default function DebtList(props) {
         setLocalDebts(oldState => {
 
             const newDebt = {
-                _id: oldState[index]._id,
+                id: oldState[index].id,
                 name: newName,
                 value: Number(oldState[index].value),
                 status: oldState[index].status
@@ -36,7 +36,7 @@ export default function DebtList(props) {
         setLocalDebts(oldState => {
 
             const newDebt = {
-                _id: oldState[index]._id,
+                id: oldState[index].id,
                 name: oldState[index].name,
                 value: Number(newValue),
                 status: oldState[index].status
@@ -53,7 +53,7 @@ export default function DebtList(props) {
         setLocalDebts(oldState => {
 
             const newDebt = {
-                _id: oldState[index]._id,
+                id: oldState[index].id,
                 name: oldState[index].name,
                 value: oldState[index].value,
                 status: newStatus
@@ -76,7 +76,7 @@ export default function DebtList(props) {
 
     function clone(debt, index) {
         const newDebt = {
-            _id: null,
+            id: null,
             name: debt.name,
             value: debt.value,
             status: debt.status

@@ -16,7 +16,7 @@ export default function BillingCyclesForm(props) {
         setName, 
         setMonth,
         setYear,
-        _id,
+        id,
         name, 
         month, 
         year,
@@ -28,7 +28,7 @@ export default function BillingCyclesForm(props) {
     const { selected } = useContext(TabContext)
 
     const billing = {
-        _id: String(_id),
+        id: String(id),
         name: String(name),
         month: Number(month),
         year: Number(year),

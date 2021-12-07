@@ -6,17 +6,17 @@ export const InputContext = createContext({})
 const date = new Date()
 
 const INITIAL_STATE = {
-    _id: null,
+    id: null,
     name: "",
     month: date.getMonth() + 1,
     year: date.getFullYear(),
     credits: [{
-        _id: null,
+        id: null,
         name: "",
         value: 0
     }],
     debts: [{
-        _id: null,
+        id: null,
         name: "",
         value: 0,
         status: "PAGO"
@@ -72,7 +72,7 @@ export default function InputProvider(props) {
             setCredits,
             setDebts,
             clearInputs,
-            _id: input._id,
+            id: input.id,
             name: input.name, 
             month: input.month, 
             year: input.year,
