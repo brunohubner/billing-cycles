@@ -14,8 +14,14 @@ import AuthInputProvider from "./context/AuthInputContext";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ToastContainer, } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { api } from "./services/api";
+import { useEffect } from "react";
 
 export default function App() {
+    useEffect(() => {
+        // Request to Unidling backend
+        api.options()
+    }, [])
     return (
         <div className="wrapper">
             <AuthInputProvider>
