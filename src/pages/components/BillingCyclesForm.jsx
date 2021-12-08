@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-redundant-roles */
 import { useContext, useEffect, useState } from "react";
 import { InputContext } from "../../context/InputContext";
 import { ListContext } from "../../context/ListContext";

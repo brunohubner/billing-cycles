@@ -1,4 +1,4 @@
-export default {
+const toastConfig = {
     position: "top-right",
     autoClose: 3000,
     hideProgressBar: false,
@@ -7,3 +7,5 @@ export default {
     draggable: true,
     progress: undefined,
 }
+
+export default toastConfig

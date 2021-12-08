@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import Gravatar from "react-gravatar"

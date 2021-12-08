@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect } from "react"
 import TabContent from "../common/tab/TabContent"
 import TabHeader from "../common/tab/TabHeader"

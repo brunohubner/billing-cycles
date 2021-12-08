@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/anchor-has-content */
 import { memo } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";

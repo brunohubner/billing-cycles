@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-target-blank */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import "../styles/Auth.css"
 import { useContext, useState } from "react"
 import { AuthContext } from "../context/AuthContext"

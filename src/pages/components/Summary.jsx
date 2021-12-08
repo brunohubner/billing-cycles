@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Grid from "../../common/layout/Grid";
 import ValueBox from "../../common/widget/ValueBox";
 import Row from "../../common/layout/Row";
