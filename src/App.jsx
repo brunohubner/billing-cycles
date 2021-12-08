@@ -23,7 +23,7 @@ export default function App() {
         api.options()
     }, [])
     return (
-        <div className="wrapper">
+        <div className="wrapper app">
             <AuthInputProvider>
                 <AuthProvider>
                     <AuthOrApp>
