@@ -281,10 +281,10 @@
     react-refresh "^0.10.0"
     resolve "^1.20.0"
 
-admin-lte@2.3.6:
-  version "2.3.6"
-  resolved "https://registry.yarnpkg.com/admin-lte/-/admin-lte-2.3.6.tgz#715f841480cbd9ba0355b49243bb41b88e7b2650"
-  integrity sha1-cV+EFIDL2boDVbSSQ7tBuI57JlA=
+admin-lte@2.3.11:
+  version "2.3.11"
+  resolved "https://registry.yarnpkg.com/admin-lte/-/admin-lte-2.3.11.tgz#da56dcd34d42e9ef1af362be15520a053a9d43db"
+  integrity sha1-2lbc001C6e8a82K+FVIKBTqdQ9s=
 
 ansi-styles@^3.2.1:
   version "3.2.1"
