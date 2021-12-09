@@ -8,7 +8,7 @@ const emptyDebt = {
     id: null,
     name: "",
     value: 0,
-    status: ""
+    status: "PAGO"
 }
 
 export default function DebtList(props) {
