@@ -1,3 +1,5 @@
+import { toast } from "react-toastify"
+import toastConfig from "../utils/toastConfig"
 import { api } from "./api"
 
 const INITIAL_SUMMARY_STATE = { credit: 0, debt: 0 }
@@ -6,7 +8,7 @@ const INITIAL_COUNT_STATE = { value: 0 }
 export default function createBillingCyclesService() {
     async function add(values) {
         let data = null
-        await api.post("/billingCycles" , values)
+        await api.post("/billingCycles", values)
             .then(resp => data = resp.data)
             .catch(err => data = err.response.data)
         return data
@@ -17,7 +19,7 @@ export default function createBillingCyclesService() {
         await api.put(`/billingCycles/${values.id}`, values)
             .then(resp => data = resp.data)
             .catch(err => data = err.response.data)
-    
+
         return data
     }
 
@@ -33,7 +35,11 @@ export default function createBillingCyclesService() {
         let list = []
         await api.get("billingCycles")
             .then(resp => list = resp.data || [])
-            .catch(err => console.log("Failed\n" + err.message))
+            .catch(_ => {
+                toast.error("Não foi possível obter a lista de registros!", {
+                    ...toastConfig
+                })
+            })
         return list
     }
 
@@ -41,8 +47,10 @@ export default function createBillingCyclesService() {
         let summary = INITIAL_SUMMARY_STATE
         await api.get("billingCycles/summary")
             .then(resp => summary = resp.data || INITIAL_SUMMARY_STATE)
-            .catch(err => {
-                console.log("Não foi possível obter o Sumário\n" + err.message)
+            .catch(_ => {
+                toast.error("Não foi possível obter o sumário!", {
+                    ...toastConfig
+                })
             })
         return summary
     }
@@ -51,8 +59,10 @@ export default function createBillingCyclesService() {
         let count = INITIAL_COUNT_STATE
         await api.get("billingCycles/count")
             .then(resp => count = resp.data || INITIAL_COUNT_STATE)
-            .catch(err => {
-                console.log("Não foi possível obter o Count\n" + err.message)
+            .catch(_ => {
+                toast.error("Não foi possível obter a quantidade de registros!", {
+                    ...toastConfig
+                })
             })
         return count
     }
