@@ -5,9 +5,13 @@ export default function TabContent(props) {
     const { selected, tabsShowed } = useContext(TabContext)
 
     return tabsShowed[props.id] ? (
-        <div id={props.id} 
-            className={`tab-pane ${selected === props.id ? "active" : ""}`}>
+        <div
+            id={props.id}
+            className={`tab-pane ${selected === props.id ? "active" : ""}`}
+        >
             {props.children}
         </div>
-    ) : false
+    ) : (
+        false
+    )
 }

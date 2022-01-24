@@ -16,12 +16,14 @@ export default function BillingCyclesList(props) {
                     <td>
                         <button
                             className="btn btn-warning"
-                            onClick={() => showUpdate(billing)} >
+                            onClick={() => showUpdate(billing)}
+                        >
                             <i className="fa fa-pencil"></i>
                         </button>
                         <button
                             className="btn btn-danger"
-                            onClick={() => showDelete(billing)} >
+                            onClick={() => showDelete(billing)}
+                        >
                             <i className="fa fa-trash-o"></i>
                         </button>
                     </td>
@@ -29,7 +31,7 @@ export default function BillingCyclesList(props) {
             )
         })
     }
-    
+
     return (
         <div>
             <table className="table">
@@ -41,9 +43,7 @@ export default function BillingCyclesList(props) {
                         <th className="table-actions">Ações</th>
                     </tr>
                 </thead>
-                <tbody>
-                    { renderRows() }
-                </tbody>
+                <tbody>{renderRows()}</tbody>
             </table>
         </div>
     )

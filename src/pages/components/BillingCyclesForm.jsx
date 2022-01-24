@@ -1,25 +1,25 @@
 /* eslint-disable jsx-a11y/no-redundant-roles */
-import { useContext, useEffect, useState } from "react";
-import { InputContext } from "../../context/InputContext";
-import { ListContext } from "../../context/ListContext";
-import { TabContext } from "../../context/TabContext";
-import CreditList from "./CreditList";
-import DebtList from "./DebtList";
-import LabelAndInput from "./LabelAndInput";
-import Summary from "./Summary";
+import { useContext, useEffect, useState } from "react"
+import { InputContext } from "../../context/InputContext"
+import { ListContext } from "../../context/ListContext"
+import { TabContext } from "../../context/TabContext"
+import CreditList from "./CreditList"
+import DebtList from "./DebtList"
+import LabelAndInput from "./LabelAndInput"
+import Summary from "./Summary"
 
 export default function BillingCyclesForm(props) {
-    const [ submitLabel, setSubmitLabel ] = useState("Salvar")
-    const [ submitClass, setSubmitClass ] = useState("primary")
+    const [submitLabel, setSubmitLabel] = useState("Salvar")
+    const [submitClass, setSubmitClass] = useState("primary")
     const [readOnly, setReadOnly] = useState(false)
 
     const {
-        setName, 
+        setName,
         setMonth,
         setYear,
         id,
-        name, 
-        month, 
+        name,
+        month,
         year,
         credits,
         debts
@@ -53,19 +53,18 @@ export default function BillingCyclesForm(props) {
 
     useEffect(() => {
         setReadOnly(false)
-        if(selected === "tabCreate") {
+        if (selected === "tabCreate") {
             setSubmitLabel("Salvar")
             setSubmitClass("primary")
-        } else if(selected === "tabUpdate") {
+        } else if (selected === "tabUpdate") {
             setSubmitLabel("Alterar")
             setSubmitClass("info")
-        } else if(selected === "tabDelete") {
+        } else if (selected === "tabDelete") {
             setSubmitLabel("Excluir")
             setSubmitClass("danger")
             setReadOnly(true)
         }
     }, [selected])
-
 
     return (
         <form role="form">
@@ -77,7 +76,8 @@ export default function BillingCyclesForm(props) {
                     value={name}
                     onChange={setName}
                     readOnly={readOnly}
-                    placeholder="Informe o nome" ></LabelAndInput>
+                    placeholder="Informe o nome"
+                ></LabelAndInput>
                 <LabelAndInput
                     name="month"
                     label="Mês"
@@ -86,7 +86,8 @@ export default function BillingCyclesForm(props) {
                     value={month}
                     onChange={setMonth}
                     readOnly={readOnly}
-                    placeholder="Informe o mês" ></LabelAndInput>
+                    placeholder="Informe o mês"
+                ></LabelAndInput>
                 <LabelAndInput
                     name="year"
                     label="Ano"
@@ -95,29 +96,30 @@ export default function BillingCyclesForm(props) {
                     value={year}
                     onChange={setYear}
                     readOnly={readOnly}
-                    placeholder="Informe o Ano" ></LabelAndInput>
+                    placeholder="Informe o Ano"
+                ></LabelAndInput>
                 <Summary></Summary>
-                <CreditList 
-                    cols="12 6"
-                    readOnly={readOnly} ></CreditList>
-                <DebtList 
-                    cols="12 6"
-                    readOnly={readOnly} ></DebtList>
+                <CreditList cols="12 6" readOnly={readOnly}></CreditList>
+                <DebtList cols="12 6" readOnly={readOnly}></DebtList>
             </div>
             <div className="box-footer">
-                <button 
-                    type="submit" 
+                <button
+                    type="submit"
                     className={`btn btn-${submitClass}`}
                     onClick={e => {
                         e.preventDefault()
                         submit()
-                    }}>
-                        {submitLabel}
-                    </button>
+                    }}
+                >
+                    {submitLabel}
+                </button>
                 <button
                     type="button"
                     className="btn btn-default"
-                    onClick={init} >Cancelar</button>
+                    onClick={init}
+                >
+                    Cancelar
+                </button>
             </div>
         </form>
     )

@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import createBillingCyclesService from "../services/billingCyclesService";
-import { useCallback, useState } from "react";
-import { useContext } from "react";
-import { TabContext } from "./TabContext";
-import { createContext } from "react";
-import { InputContext } from "./InputContext";
-import showErrorsOrNext from "../utils/showErrorsOrNext";
+import createBillingCyclesService from "../services/billingCyclesService"
+import { useCallback, useState } from "react"
+import { useContext } from "react"
+import { TabContext } from "./TabContext"
+import { createContext } from "react"
+import { InputContext } from "./InputContext"
+import showErrorsOrNext from "../utils/showErrorsOrNext"
 
 const billingCycle = createBillingCyclesService()
 
@@ -44,14 +44,16 @@ export default function ListProvider(props) {
     }, [])
 
     return (
-        <ListContext.Provider value={{
-            list, 
-            refreshList, 
-            add,
-            update,
-            remove,
-            init
-        }}>
+        <ListContext.Provider
+            value={{
+                list,
+                refreshList,
+                add,
+                update,
+                remove,
+                init
+            }}
+        >
             {props.children}
         </ListContext.Provider>
     )

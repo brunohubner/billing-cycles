@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { createContext, useState, useEffect } from "react";
-import { api } from "../services/api";
-import createAuthService from "../services/authService";
-import showErrorsOrNext from "../utils/showErrorsOrNext";
+import { createContext, useState, useEffect } from "react"
+import { api } from "../services/api"
+import createAuthService from "../services/authService"
+import showErrorsOrNext from "../utils/showErrorsOrNext"
 
 const userKey = "@my-money-app:user"
 const INITIAL_USER_STATE = JSON.parse(localStorage.getItem(userKey))
@@ -19,9 +19,9 @@ export default function AuthProvider(props) {
         const resp = await auth.validateTokenService(token)
         showErrorsOrNext(resp, () => {
             resp.valid
-            ? api.defaults.headers.common.authorization = `Bearer ${token}`
-            : logout()
-        setValidToken(resp.valid)
+                ? (api.defaults.headers.common.authorization = `Bearer ${token}`)
+                : logout()
+            setValidToken(resp.valid)
         })
     }
 
@@ -35,7 +35,7 @@ export default function AuthProvider(props) {
             clearAuthInputs()
         })
     }
-    
+
     async function login(values, clearAuthInputs) {
         const resp = await auth.submitService("login", values)
         showErrorsOrNext(resp, () => {
@@ -55,27 +55,29 @@ export default function AuthProvider(props) {
     }
 
     async function autoLogin() {
-        if(!user) return
+        if (!user) return
         await validateToken(user.token)
     }
 
     useEffect(() => {
-        (async () => {
+        ;(async () => {
             await autoLogin()
             setLoading(false)
         })()
     }, [])
 
     return (
-        <AuthContext.Provider value={{
-            signup,
-            login,
-            logout,
-            autoLogin,
-            user,
-            loading,
-            validToken
-        }}>
+        <AuthContext.Provider
+            value={{
+                signup,
+                login,
+                logout,
+                autoLogin,
+                user,
+                loading,
+                validToken
+            }}
+        >
             {props.children}
         </AuthContext.Provider>
     )

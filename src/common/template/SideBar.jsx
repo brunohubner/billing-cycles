@@ -1,5 +1,5 @@
-import { memo } from "react";
-import Menu from "./Menu";
+import { memo } from "react"
+import Menu from "./Menu"
 
 function SideBar(props) {
     return (

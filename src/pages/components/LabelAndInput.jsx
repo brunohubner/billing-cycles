@@ -12,7 +12,8 @@ export default function LabelAndInput(props) {
                     value={props.value}
                     placeholder={props.placeholder}
                     onChange={e => props.onChange(e.target.value)}
-                    readOnly={props.readOnly} />  
+                    readOnly={props.readOnly}
+                />
             </div>
         </Grid>
     )

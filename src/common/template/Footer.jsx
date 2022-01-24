@@ -7,7 +7,14 @@ function Footer(props) {
         <footer className="main-footer">
             <strong>
                 Copyright &copy; {year}
-                <a href="https://github.com/brunohubner" target="_blank" rel="noreferrer"> Bruno Hubner</a>
+                <a
+                    href="https://github.com/brunohubner"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    {" "}
+                    Bruno Hubner
+                </a>
             </strong>
         </footer>
     )

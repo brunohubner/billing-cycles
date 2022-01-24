@@ -6,15 +6,20 @@ Esta é uma aplicação web onde você pode gerenciar seu fluxo de gastos mensai
 
 As tecnologias usadas no desenvolvimento dessa aplicação foram Javascript e React e para executa-la localmente antes inicie localmente também o <a href="https://github.com/brunohubner/billig-cycles-api">backend</a> disponível também em meu github.
 
-- Instalar dependencias do frontend:
-````
+-   Instalar dependencias do frontend:
+
+```
 $ yarn install
-````
-- Executar em modo desenvolvedor:
-````
+```
+
+-   Executar em modo desenvolvedor:
+
+```
 $ yarn start
-````
-- Fazer build e executar em modo produção:
-````
+```
+
+-   Fazer build e executar em modo produção:
+
+```
 $ yarn start:local
-````
+```

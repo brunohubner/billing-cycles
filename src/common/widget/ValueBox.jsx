@@ -1,4 +1,4 @@
-import Grid from "../layout/Grid";
+import Grid from "../layout/Grid"
 
 export default function ValueBox(props) {
     return (

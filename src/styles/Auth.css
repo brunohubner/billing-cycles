@@ -1,9 +1,10 @@
-html, body {
+html,
+body {
     height: 100%;
 }
 
 .wrapper {
-    background-color: #ddd!important;
+    background-color: #ddd !important;
 }
 
 .login-box-body {
@@ -28,7 +29,7 @@ html, body {
 }
 
 .credits a {
-    color: #222
+    color: #222;
 }
 
 .credits a:hover {

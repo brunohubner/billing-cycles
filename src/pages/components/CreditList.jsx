@@ -14,10 +14,9 @@ export default function CreditList(props) {
     const { credits, setCredits } = useContext(InputContext)
     const [localCredits, setLocalCredits] = useState(credits)
 
-    function setCreditName(newName, index){
-        if(newName.length > 45) return
+    function setCreditName(newName, index) {
+        if (newName.length > 45) return
         setLocalCredits(oldState => {
-
             const newCredit = {
                 id: oldState[index].id,
                 name: newName,
@@ -31,9 +30,8 @@ export default function CreditList(props) {
     }
 
     function setCreditValue(newValue, index) {
-        if(newValue > 9999999 || newValue < 0) return
+        if (newValue > 9999999 || newValue < 0) return
         setLocalCredits(oldState => {
-
             const newCredit = {
                 id: oldState[index].id,
                 name: oldState[index].name,
@@ -70,7 +68,7 @@ export default function CreditList(props) {
     }
 
     function remove(index) {
-        if(credits.length <= 1) return
+        if (credits.length <= 1) return
         setLocalCredits(oldState => {
             const newCredits = [...oldState]
             newCredits.splice(index, 1)
@@ -92,7 +90,8 @@ export default function CreditList(props) {
                             value={credit.name}
                             placeholder="Informe o nome"
                             onChange={setCreditName}
-                            readOnly={props.readOnly} ></Input>
+                            readOnly={props.readOnly}
+                        ></Input>
                     </td>
                     <td>
                         <Input
@@ -101,27 +100,33 @@ export default function CreditList(props) {
                             type="number"
                             placeholder="Informe o valor"
                             onChange={setCreditValue}
-                            readOnly={props.readOnly} ></Input>
+                            readOnly={props.readOnly}
+                        ></Input>
                     </td>
-                    {props.readOnly ? false : (
+                    {props.readOnly ? (
+                        false
+                    ) : (
                         <td className="table-actions">
-                            <button 
+                            <button
                                 type="button"
                                 className="btn btn-success"
-                                onClick={() => add(index)} >
-                                    <i className="fa fa-plus"></i>
+                                onClick={() => add(index)}
+                            >
+                                <i className="fa fa-plus"></i>
                             </button>
-                            <button 
+                            <button
                                 type="button"
                                 className="btn btn-warning"
-                                onClick={() => clone(credit, index)} >
-                                    <i className="fa fa-clone"></i>
+                                onClick={() => clone(credit, index)}
+                            >
+                                <i className="fa fa-clone"></i>
                             </button>
-                            <button 
+                            <button
                                 type="button"
                                 className="btn btn-danger"
-                                onClick={() => remove(index)} >
-                                    <i className="fa fa-trash-o"></i>
+                                onClick={() => remove(index)}
+                            >
+                                <i className="fa fa-trash-o"></i>
                             </button>
                         </td>
                     )}
@@ -140,14 +145,10 @@ export default function CreditList(props) {
                     <tr>
                         <th>Nome</th>
                         <th>Valor</th>
-                        {props.readOnly ? false : (
-                            <th>Ações</th>
-                        )}
+                        {props.readOnly ? false : <th>Ações</th>}
                     </tr>
                 </thead>
-                <tbody>
-                    {renderRows()}
-                </tbody>
+                <tbody>{renderRows()}</tbody>
             </table>
         </Grid>
     )

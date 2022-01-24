@@ -6,6 +6,7 @@ export default function Input(props) {
             value={props.value}
             placeholder={props.placeholder}
             onChange={e => props.onChange(e.target.value, props.index)}
-            readOnly={props.readOnly} />
+            readOnly={props.readOnly}
+        />
     )
 }

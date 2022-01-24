@@ -6,9 +6,12 @@ import Dashboard from "../../pages/Dashboard"
 export default function Content(props) {
     const contentHeight = window.innerHeight - 50 - 51
     return (
-        <div className="content-wrapper" style={{
-            minHeight: `${contentHeight}px`
-        }}>
+        <div
+            className="content-wrapper"
+            style={{
+                minHeight: `${contentHeight}px`
+            }}
+        >
             <Switch>
                 <Route path="/billing">
                     <BillingCycles></BillingCycles>

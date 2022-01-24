@@ -18,7 +18,6 @@ export default function DebtList(props) {
     function setDebtName(newName, index) {
         if (newName.length > 45) return
         setLocalDebts(oldState => {
-
             const newDebt = {
                 id: oldState[index].id,
                 name: newName,
@@ -35,7 +34,6 @@ export default function DebtList(props) {
     function setDebtValue(newValue, index) {
         if (newValue > 9999999 || newValue < 0) return
         setLocalDebts(oldState => {
-
             const newDebt = {
                 id: oldState[index].id,
                 name: oldState[index].name,
@@ -52,7 +50,6 @@ export default function DebtList(props) {
 
     function setDebtStatus(newStatus, index) {
         setLocalDebts(oldState => {
-
             const newDebt = {
                 id: oldState[index].id,
                 name: oldState[index].name,
@@ -113,7 +110,8 @@ export default function DebtList(props) {
                             value={debt.name}
                             placeholder="Informe o nome"
                             onChange={setDebtName}
-                            readOnly={props.readOnly} ></Input>
+                            readOnly={props.readOnly}
+                        ></Input>
                     </td>
                     <td>
                         <Input
@@ -122,7 +120,8 @@ export default function DebtList(props) {
                             type="number"
                             placeholder="Informe o valor"
                             onChange={setDebtValue}
-                            readOnly={props.readOnly} ></Input>
+                            readOnly={props.readOnly}
+                        ></Input>
                     </td>
                     <td>
                         {props.readOnly ? (
@@ -131,36 +130,45 @@ export default function DebtList(props) {
                                 value={debt.status}
                                 placeholder="PAGO | PENDENTE | AGENDADO"
                                 onChange={setDebtStatus}
-                                readOnly={props.readOnly} ></Input>
+                                readOnly={props.readOnly}
+                            ></Input>
                         ) : (
                             <select
                                 className="form-control"
-                                onChange={e => setDebtStatus(e.target.value, index)}
-                                value={debt.status} >
+                                onChange={e =>
+                                    setDebtStatus(e.target.value, index)
+                                }
+                                value={debt.status}
+                            >
                                 <option value="PAGO">PAGO</option>
                                 <option value="PENDENTE">PENDENTE</option>
                                 <option value="AGENDADO">AGENDADO</option>
                             </select>
                         )}
                     </td>
-                    {props.readOnly ? false : (
+                    {props.readOnly ? (
+                        false
+                    ) : (
                         <td className="table-actions">
                             <button
                                 type="button"
                                 className="btn btn-success"
-                                onClick={() => add(index)} >
+                                onClick={() => add(index)}
+                            >
                                 <i className="fa fa-plus"></i>
                             </button>
                             <button
                                 type="button"
                                 className="btn btn-warning"
-                                onClick={() => clone(debt, index)} >
+                                onClick={() => clone(debt, index)}
+                            >
                                 <i className="fa fa-clone"></i>
                             </button>
                             <button
                                 type="button"
                                 className="btn btn-danger"
-                                onClick={() => remove(index)} >
+                                onClick={() => remove(index)}
+                            >
                                 <i className="fa fa-trash-o"></i>
                             </button>
                         </td>
@@ -181,14 +189,10 @@ export default function DebtList(props) {
                         <th>Nome</th>
                         <th>Valor</th>
                         <th>Status</th>
-                        {props.readOnly ? false : (
-                            <th>Ações</th>
-                        )}
+                        {props.readOnly ? false : <th>Ações</th>}
                     </tr>
                 </thead>
-                <tbody>
-                    {renderRows()}
-                </tbody>
+                <tbody>{renderRows()}</tbody>
             </table>
         </Grid>
     )

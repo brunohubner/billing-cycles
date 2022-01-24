@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { createContext } from "react";
-import createBillingCyclesService from "../services/billingCyclesService";
+import { useState } from "react"
+import { createContext } from "react"
+import createBillingCyclesService from "../services/billingCyclesService"
 
 const INITIAL_SUMMARY_STATE = { credit: 0, debt: 0 }
 const billingCycle = createBillingCyclesService()
@@ -15,11 +15,13 @@ export default function SummaryProvider(props) {
     }
 
     return (
-        <SummaryContext.Provider value={{
-            credit: summary.credit,
-            debt: summary.debt,
-            getUpdatedSummary
-        }}>
+        <SummaryContext.Provider
+            value={{
+                credit: summary.credit,
+                debt: summary.debt,
+                getUpdatedSummary
+            }}
+        >
             {props.children}
         </SummaryContext.Provider>
     )
